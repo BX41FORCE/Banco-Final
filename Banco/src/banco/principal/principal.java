@@ -5,6 +5,8 @@
  */
 package banco.principal;
 
+import banco.views.index;
+
 /**
  *
  * @author bcortez
@@ -15,7 +17,8 @@ public class principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        index f = new index();
+        f.setVisible(true);
     }
-    
+
 }

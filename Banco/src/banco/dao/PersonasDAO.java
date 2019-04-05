@@ -35,7 +35,6 @@ public class PersonasDAO {
 
             if (res.next()) {
                 Personas persona = new Personas();
-                persona.setIdPersona(Integer.parseInt(res.getString("id_persona")));
                 persona.setNombre(res.getString("nombre"));
                 persona.setApellido(res.getString("apellido"));
                 persona.setFechaNacimiento(res.getString("fecha_nacimiento"));
@@ -61,7 +60,6 @@ public class PersonasDAO {
             ResultSet res = consulta.executeQuery();
             while (res.next()) {
                 Personas persona = new Personas();
-                persona.setIdPersona(Integer.parseInt(res.getString("id_persona")));
                 persona.setNombre(res.getString("nombre"));
                 persona.setApellido(res.getString("apellido"));
                 persona.setFechaNacimiento(res.getString("fecha_nacimiento"));

@@ -64,7 +64,7 @@
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -101,10 +101,10 @@
                                   <Component id="cancelar" min="-2" pref="166" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="fechaCliente" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tipoCuenta" alignment="1" pref="215" max="32767" attributes="0"/>
-                                  <Component id="fecha" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="nombre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="apellido" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="nombreCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="apellidoCliente" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -115,20 +115,25 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="nombreCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="apellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="apellidoCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="fecha" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="fechaCliente" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tipoCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -159,11 +164,9 @@
                     <Property name="text" type="java.lang.String" value="Fecha Nacimiento"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="nombre">
+                <Component class="javax.swing.JTextField" name="nombreCliente">
                 </Component>
-                <Component class="javax.swing.JTextField" name="apellido">
-                </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="fecha">
+                <Component class="javax.swing.JTextField" name="apellidoCliente">
                 </Component>
                 <Component class="javax.swing.JButton" name="guardar">
                   <Properties>
@@ -175,6 +178,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Registrar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="cancelar">
                   <Properties>
@@ -205,6 +211,8 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="fechaCliente">
                 </Component>
               </SubComponents>
             </Container>
@@ -884,15 +892,15 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="eNombre" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="eApellido" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="eFecha" alignment="0" pref="202" max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="Regsitrar_Empleado" min="-2" pref="151" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cancelarEmpleado" min="-2" pref="151" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="eFecha" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="eNombre" alignment="0" pref="202" max="32767" attributes="0"/>
+                                  <Component id="eApellido" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -912,17 +920,17 @@
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="eApellido" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="eFecha" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel18" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                              <Component id="eFecha" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="Regsitrar_Empleado" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cancelarEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="70" max="32767" attributes="0"/>
+                          <EmptySpace pref="74" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -947,8 +955,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="eApellido">
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="eFecha">
-                </Component>
                 <Component class="javax.swing.JButton" name="Regsitrar_Empleado">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -959,6 +965,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Registrar"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Regsitrar_EmpleadoActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="cancelarEmpleado">
                   <Properties>
@@ -970,6 +979,8 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cancelar"/>
                   </Properties>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="eFecha">
                 </Component>
               </SubComponents>
             </Container>

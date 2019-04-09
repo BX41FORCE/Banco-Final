@@ -1,5 +1,9 @@
 package banco.vo;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author bcortez
@@ -35,12 +39,20 @@ public class Personas {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getEdad() {
-        return edad;
+    public void setEdad() {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaNac = LocalDate.parse(fechaNacimiento, fmt);
+        LocalDate ahora = LocalDate.now();
+        Period periodo = Period.between(fechaNac, ahora);
+        this.edad = periodo.getYears() + "";
     }
 
-    public void setEdad(String edad) {
-        this.edad = edad;
+    public String getEdad() {
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaNac = LocalDate.parse(fechaNacimiento, fmt);
+        LocalDate ahora = LocalDate.now();
+        Period periodo = Period.between(fechaNac, ahora);
+        return edad = periodo.getYears() + "";
     }
 
     public Personas(String nombre, String apellido, String fechaNacimiento) {

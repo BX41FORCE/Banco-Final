@@ -16,12 +16,13 @@ import java.sql.*;
  * @author hflores
  */
 public class OperacionesDAO {
-    public void registrarOperacion (Operaciones operacion){
-    DbConnection conex = new DbConnection();
-    try {
+
+    public void registrarOperacion(Operaciones operacion) {
+        DbConnection conex = new DbConnection();
+        try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO cuenta (nombre_depositante, valor, empleado, cliente, transaccion) VALUES ('" + operacion.getDepositante()+ "', '" + operacion.getValor()+ "', '"
-                    + operacion.getEmpleado()+ "', ' " + operacion.getCliente()+ "', ' " + operacion.getidTipoTransaccion()+ "');");
+            estatuto.executeUpdate("INSERT INTO cuenta (nombre_depositante, valor, empleado, cliente, transaccion) VALUES ('" + operacion.getDepositante() + "', '" + operacion.getValor() + "', '"
+                    + operacion.getEmpleado() + "', ' " + operacion.getCliente() + "', ' " + operacion.getidTipoTransaccion() + "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
@@ -30,9 +31,9 @@ public class OperacionesDAO {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Registro la operacion");
         }
-    
+
     }
-    
+
     public ArrayList<Operaciones> consultarOperacion(int documento) {
         ArrayList<Operaciones> miOperacion = new ArrayList<Operaciones>();
         DbConnection conex = new DbConnection();
@@ -47,7 +48,7 @@ public class OperacionesDAO {
                 operacion.setDepositante(res.getString("nombre_depositante"));
                 operacion.setValor(Integer.parseInt(res.getString("valor")));
                 operacion.setEmpleado(Integer.parseInt(res.getString("empleado")));
-                operacion.setCliente(Integer.parseInt( res.getString("cliente")));
+                operacion.setCliente(Integer.parseInt(res.getString("cliente")));
                 operacion.setidTipoTransaccion(Integer.parseInt(res.getString("transaccion")));
                 miOperacion.add(operacion);
             }
@@ -60,6 +61,7 @@ public class OperacionesDAO {
         }
         return miOperacion;
     }
+
     public ArrayList<Operaciones> listaDeOperaciones() {
         ArrayList<Operaciones> miOperacion = new ArrayList<Operaciones>();
         DbConnection conex = new DbConnection();
@@ -72,7 +74,7 @@ public class OperacionesDAO {
                 operacion.setDepositante(res.getString("nombre_depositante"));
                 operacion.setValor(Integer.parseInt(res.getString("valor")));
                 operacion.setEmpleado(Integer.parseInt(res.getString("empleado")));
-                operacion.setCliente(Integer.parseInt( res.getString("cliente")));
+                operacion.setCliente(Integer.parseInt(res.getString("cliente")));
                 operacion.setidTipoTransaccion(Integer.parseInt(res.getString("transaccion")));
                 miOperacion.add(operacion);
             }
@@ -85,6 +87,5 @@ public class OperacionesDAO {
         }
         return miOperacion;
     }
-    
-    
+
 }

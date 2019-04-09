@@ -21,7 +21,7 @@ public class ClientesDAO {
         DbConnection conex = new DbConnection();
         try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO cliente (cuenta) VALUES ('" + cliente.getIdCuenta() + "');");
+            estatuto.executeUpdate("INSERT INTO clientes (persona_id,cuenta) VALUES ('" + cliente.getIdPersona() + "', '" + cliente.getIdCuenta() + "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
@@ -66,8 +66,7 @@ public class ClientesDAO {
             ResultSet res = consulta.executeQuery();
             while (res.next()) {
                 Clientes cliente = new Clientes();
-                //cliente.setCuenta(res.getString("cuenta"));
-
+                cliente.setIdCuenta(Integer.parseInt(res.getString("cuenta")));
                 miCliente.add(cliente);
             }
             res.close();

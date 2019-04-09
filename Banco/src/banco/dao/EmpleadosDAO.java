@@ -20,7 +20,7 @@ public class EmpleadosDAO {
     DbConnection conex = new DbConnection();
     try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO empleado (cuenta) VALUES ('" + empleado.getCodigo()+ "');");
+            estatuto.executeUpdate("INSERT INTO empleados (codigo, persona_id) VALUES ('" + empleado.getCodigo()+ "', '" +empleado.getIdPersona()+"');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
@@ -37,13 +37,13 @@ public class EmpleadosDAO {
         DbConnection conex = new DbConnection();
 
         try {
-            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM empleado where id_empleado = ? ");
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM empleados where id_empleado = ? ");
             consulta.setInt(1, documento);
             ResultSet res = consulta.executeQuery();
 
             if (res.next()) {
                 Empleados empleado = new Empleados();
-                empleado.setCodigo(res.getString("codigo"));
+                empleado.setCodigo();
                 miEmpleado.add(empleado);
             }
             res.close();
@@ -51,7 +51,7 @@ public class EmpleadosDAO {
             conex.desconectar();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "no se pudo consultar el Cliente\n" + e);
+            JOptionPane.showMessageDialog(null, "no se pudo consultar el empleado\n" + e);
         }
         return miEmpleado;
     }
@@ -60,11 +60,11 @@ public class EmpleadosDAO {
         DbConnection conex = new DbConnection();
 
         try {
-            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM empleado");
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM empleados");
             ResultSet res = consulta.executeQuery();
             while (res.next()) {
                 Empleados empleado = new Empleados();
-                empleado.setCodigo(res.getString("codigo"));
+                empleado.setCodigo();
                 
                 miEmpleado.add(empleado);
             }
@@ -73,7 +73,7 @@ public class EmpleadosDAO {
             conex.desconectar();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "no se pudo consultar el Cliente\n" + e);
+            JOptionPane.showMessageDialog(null, "no se pudo consultar el empleado\n" + e);
         }
         return miEmpleado;
     }

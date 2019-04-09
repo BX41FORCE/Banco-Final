@@ -19,8 +19,14 @@ public class Cuentas {
         return numeroCuenta;
     }
 
-    public void setNumeroCuenta(String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
+    public void setNumeroCuenta() {
+        String cuenta = "";
+        for (int i = 0; i < 4; i++) {
+            int numero = (int) (Math.random() * 10);
+            String con = numero + "";
+            cuenta += con;
+        }
+        this.numeroCuenta = cuenta;
     }
 
     public int getSaldo() {
@@ -39,8 +45,7 @@ public class Cuentas {
         this.idTipoCuenta = idTipoCuenta;
     }
 
-    public Cuentas(String numeroCuenta, int saldo, int idTipoCuenta) {
-        this.numeroCuenta = numeroCuenta;
+    public Cuentas(int saldo, int idTipoCuenta) {
         this.saldo = saldo;
         this.idTipoCuenta = idTipoCuenta;
     }

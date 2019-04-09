@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/hflores/Escritorio/Banco-Final/Banco/src/banco/views/index.java</file>
             <file>file:/home/hflores/Escritorio/Banco-Final/Banco/src/banco/dao/EmpleadosDAO.java</file>
+=======
+            <file>file:/home/bcortez/Escritorio/Banco-Final/Banco/src/banco/views/index.java</file>
+            <file>file:/home/bcortez/Escritorio/Banco-Final/Banco/src/banco/dao/ClientesDAO.java</file>
+>>>>>>> a2f6e187260e1414f402e53420f9f4b8c2487854
         </group>
     </open-files>
 </project-private>

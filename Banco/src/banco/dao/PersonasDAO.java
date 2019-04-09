@@ -12,7 +12,7 @@ public class PersonasDAO {
         DbConnection conex = new DbConnection();
         try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO persona (nombre,apellido,fecha_nacimiento,edad) VALUES ('" + persona.getNombre() + "', '" + persona.getApellido() + "', '"
+            estatuto.executeUpdate("INSERT INTO personas (nombre,apellido,fecha_nacimiento,edad) VALUES ('" + persona.getNombre() + "', '" + persona.getApellido() + "', '"
                     + persona.getFechaNacimiento() + "', '" + persona.getEdad() + "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
@@ -22,6 +22,24 @@ public class PersonasDAO {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Registro la persona");
         }
+    }
+
+    public String consultarIdPersona() {
+        DbConnection conex = new DbConnection();
+        String id_Persona = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT MAX (id_persona) AS id_persona FROM personas;");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                id_Persona = res.getString("id_persona");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo enlazar a la persona\n" + e);
+        }
+        return id_Persona;
     }
 
     public ArrayList<Personas> consultarPersona(int documento) {
@@ -38,7 +56,7 @@ public class PersonasDAO {
                 persona.setNombre(res.getString("nombre"));
                 persona.setApellido(res.getString("apellido"));
                 persona.setFechaNacimiento(res.getString("fecha_nacimiento"));
-                persona.setEdad(res.getString("edad"));
+                persona.setEdad();
                 miPersona.add(persona);
             }
             res.close();
@@ -63,7 +81,7 @@ public class PersonasDAO {
                 persona.setNombre(res.getString("nombre"));
                 persona.setApellido(res.getString("apellido"));
                 persona.setFechaNacimiento(res.getString("fecha_nacimiento"));
-                persona.setEdad(res.getString("edad"));
+                persona.setEdad();
                 miPersona.add(persona);
             }
             res.close();

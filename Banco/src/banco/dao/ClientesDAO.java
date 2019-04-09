@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  * @author hflores
  */
 public class ClientesDAO {
-    
-    public void registrarCliente (Clientes cliente){
-    DbConnection conex = new DbConnection();
-    try {
+
+    public void registrarCliente(Clientes cliente) {
+        DbConnection conex = new DbConnection();
+        try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO cliente (cuenta) VALUES ('" + cliente.getCuenta() + "');");
+            estatuto.executeUpdate("INSERT INTO cliente (cuenta) VALUES ('" + cliente.getIdCuenta() + "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
@@ -30,9 +30,9 @@ public class ClientesDAO {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Registro el cliente");
         }
-    
+
     }
-    
+
     public ArrayList<Clientes> consultarCliente(int documento) {
         ArrayList<Clientes> miCliente = new ArrayList<Clientes>();
         DbConnection conex = new DbConnection();
@@ -44,7 +44,7 @@ public class ClientesDAO {
 
             if (res.next()) {
                 Clientes cliente = new Clientes();
-                //cliente.setCuenta (res.getString("cuenta"));
+                cliente.setIdCuenta(Integer.parseInt(res.getString("cuenta")));
                 miCliente.add(cliente);
             }
             res.close();
@@ -56,6 +56,7 @@ public class ClientesDAO {
         }
         return miCliente;
     }
+
     public ArrayList<Clientes> listaDeClientes() {
         ArrayList<Clientes> miCliente = new ArrayList<Clientes>();
         DbConnection conex = new DbConnection();
@@ -66,7 +67,7 @@ public class ClientesDAO {
             while (res.next()) {
                 Clientes cliente = new Clientes();
                 //cliente.setCuenta(res.getString("cuenta"));
-                
+
                 miCliente.add(cliente);
             }
             res.close();

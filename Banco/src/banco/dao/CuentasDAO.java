@@ -21,7 +21,7 @@ public class CuentasDAO {
     try {
             Statement estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO cuenta (numero_cuenta, saldo, tipo_cuenta) VALUES ('" + cuenta.getNumeroCuenta()+ "', '" + cuenta.getSaldo() + "', '"
-                    + cuenta.getTipoCuenta()+ "');");
+                    + cuenta.getIdTipoCuenta()+ "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
@@ -45,8 +45,8 @@ public class CuentasDAO {
             if (res.next()) {
                 Cuentas cuenta = new Cuentas();
                 cuenta.setNumeroCuenta(res.getString("numero_cuenta"));
-                cuenta.setSaldo(res.getLong("saldo"));
-                //cuenta.setTipoCuenta(res.getString("tipoCuenta"));
+                cuenta.setSaldo(Integer.parseInt(res.getString("saldo")));
+                cuenta.setIdTipoCuenta(Integer.parseInt(res.getString("tipoCuenta")));
                 miCuenta.add(cuenta);
             }
             res.close();
@@ -68,8 +68,8 @@ public class CuentasDAO {
             while (res.next()) {
                 Cuentas cuenta = new Cuentas();
                 cuenta.setNumeroCuenta(res.getString("numero_cuenta"));
-                cuenta.setSaldo(res.getLong("saldo"));
-                //cuenta.setTipoCuenta(res.getString("tipoCuenta"));
+                cuenta.setSaldo(Integer.parseInt(res.getString("saldo")));
+                cuenta.setIdTipoCuenta(Integer.parseInt(res.getString("tipoCuenta")));
                 miCuenta.add(cuenta);
             }
             res.close();

@@ -20,8 +20,8 @@ public class OperacionesDAO {
     DbConnection conex = new DbConnection();
     try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO cuenta (nombre_depositante, valor, empleado, cliente, transaccion) VALUES ('" + operacion.getNombreDepositante()+ "', '" + operacion.getValor()+ "', '"
-                    + operacion.getEmpleado()+ "', ' " + operacion.getCliente()+ "', ' " + operacion.getTransaccion() + "');");
+            estatuto.executeUpdate("INSERT INTO cuenta (nombre_depositante, valor, empleado, cliente, transaccion) VALUES ('" + operacion.getDepositante()+ "', '" + operacion.getValor()+ "', '"
+                    + operacion.getEmpleado()+ "', ' " + operacion.getCliente()+ "', ' " + operacion.getidTipoTransaccion()+ "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
@@ -44,11 +44,11 @@ public class OperacionesDAO {
 
             if (res.next()) {
                 Operaciones operacion = new Operaciones();
-                operacion.setNombreDepositante(res.getString("nombre_depositante"));
-                operacion.setValor(res.getLong("valor"));
-                //operacion.setEmpleado(res.getString("empleado"));
-                //operacion.setCliente(res.getString("cliente"));
-                //operacion.setTransaccion(res.getString("transaccion"));
+                operacion.setDepositante(res.getString("nombre_depositante"));
+                operacion.setValor(Integer.parseInt(res.getString("valor")));
+                operacion.setEmpleado(Integer.parseInt(res.getString("empleado")));
+                operacion.setCliente(Integer.parseInt( res.getString("cliente")));
+                operacion.setidTipoTransaccion(Integer.parseInt(res.getString("transaccion")));
                 miOperacion.add(operacion);
             }
             res.close();
@@ -69,11 +69,11 @@ public class OperacionesDAO {
             ResultSet res = consulta.executeQuery();
             while (res.next()) {
                 Operaciones operacion = new Operaciones();
-                operacion.setNombreDepositante(res.getString("nombre_depositante"));
-                operacion.setValor(res.getLong("valor"));
-                //operacion.setEmpleado(res.getString("empleado"));
-                //operacion.setCliente(res.getString("cliente"));
-                //operacion.setTransaccion(res.getString("transaccion"));
+                operacion.setDepositante(res.getString("nombre_depositante"));
+                operacion.setValor(Integer.parseInt(res.getString("valor")));
+                operacion.setEmpleado(Integer.parseInt(res.getString("empleado")));
+                operacion.setCliente(Integer.parseInt( res.getString("cliente")));
+                operacion.setidTipoTransaccion(Integer.parseInt(res.getString("transaccion")));
                 miOperacion.add(operacion);
             }
             res.close();

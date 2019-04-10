@@ -18,7 +18,13 @@ public class Empleados {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo() {
+        String codigo = "";
+        for (int i = 0; i < 5; i++) {
+            int numero = (int) (Math.random() * 10);
+            String con = numero + "";
+            codigo += con;
+        }
         this.codigo = codigo;
     }
 
@@ -30,8 +36,7 @@ public class Empleados {
         this.idPersona = idPersona;
     }
 
-    public Empleados(String codigo, int idPersona) {
-        this.codigo = codigo;
+    public Empleados(int idPersona) {
         this.idPersona = idPersona;
     }
 

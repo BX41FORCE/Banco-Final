@@ -19,6 +19,7 @@ public class principal {
     public static void main(String[] args) {
         index f = new index();
         f.setVisible(true);
+        f.obtenerEmpleados();
     }
 
 }

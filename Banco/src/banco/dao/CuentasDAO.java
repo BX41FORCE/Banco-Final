@@ -65,7 +65,7 @@ public class CuentasDAO {
                 Cuentas cuenta = new Cuentas();
                 cuenta.setNumeroCuenta();
                 cuenta.setSaldo(Integer.parseInt(res.getString("saldo")));
-                //cuenta.setTipoCuenta(res.getString("tipoCuenta"));
+                cuenta.setIdTipoCuenta(Integer.parseInt(res.getString("tipoCuenta")));
                 miCuenta.add(cuenta);
             }
             res.close();
@@ -87,9 +87,6 @@ public class CuentasDAO {
             ResultSet res = consulta.executeQuery();
             while (res.next()) {
                 Cuentas cuenta = new Cuentas();
-                cuenta.setNumeroCuenta();
-                cuenta.setSaldo(Integer.parseInt(res.getString("saldo")));
-                //cuenta.setTipoCuenta(res.getString("tipoCuenta"));
                 miCuenta.add(cuenta);
             }
             res.close();
@@ -103,3 +100,5 @@ public class CuentasDAO {
     }
 
 }
+            
+                //cuenta.setTipoCuenta(res.getString("tipoCuenta"));

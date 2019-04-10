@@ -7,6 +7,7 @@ package banco.dao;
 
 import banco.connection.DbConnection;
 import banco.vo.Empleados;
+import banco.vo.Personas;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -16,11 +17,12 @@ import java.sql.*;
  * @author hflores
  */
 public class EmpleadosDAO {
-    public void registrarEmpleado (Empleados empleado){
-    DbConnection conex = new DbConnection();
-    try {
+
+    public void registrarEmpleado(Empleados empleado) {
+        DbConnection conex = new DbConnection();
+        try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO empleado (cuenta) VALUES ('" + empleado.getCodigo()+ "');");
+            estatuto.executeUpdate("INSERT INTO empleados (codigo, persona_id) VALUES ('" + empleado.getCodigo() + "', '" + empleado.getIdPersona() + "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
@@ -29,21 +31,21 @@ public class EmpleadosDAO {
             System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "No se Registro el empleado");
         }
-    
+
     }
-    
+
     public ArrayList<Empleados> consultarEmpleado(int documento) {
         ArrayList<Empleados> miEmpleado = new ArrayList<Empleados>();
         DbConnection conex = new DbConnection();
 
         try {
-            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM empleado where id_empleado = ? ");
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM empleados where id_empleado = ? ");
             consulta.setInt(1, documento);
             ResultSet res = consulta.executeQuery();
 
             if (res.next()) {
                 Empleados empleado = new Empleados();
-                empleado.setCodigo(res.getString("codigo"));
+                empleado.setCodigo();
                 miEmpleado.add(empleado);
             }
             res.close();
@@ -51,21 +53,22 @@ public class EmpleadosDAO {
             conex.desconectar();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "no se pudo consultar el Cliente\n" + e);
+            JOptionPane.showMessageDialog(null, "no se pudo consultar el empleado\n" + e);
         }
         return miEmpleado;
     }
-    public ArrayList<Empleados> listaDeEmpleados() {
-        ArrayList<Empleados> miEmpleado = new ArrayList<Empleados>();
+
+    public ArrayList<Personas> listaDeEmpleados() {
+        ArrayList<Personas> miEmpleado = new ArrayList<Personas>();
         DbConnection conex = new DbConnection();
 
         try {
-            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM empleado");
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT personas.nombre , personas.apellido FROM empleados inner join personas ON empleados.persona_id = personas.id_persona;");
             ResultSet res = consulta.executeQuery();
             while (res.next()) {
-                Empleados empleado = new Empleados();
-                empleado.setCodigo(res.getString("codigo"));
-                
+                Personas empleado = new Personas();
+                empleado.setNombre(res.getString("nombre"));
+                empleado.setApellido(res.getString("apellido"));
                 miEmpleado.add(empleado);
             }
             res.close();
@@ -73,9 +76,9 @@ public class EmpleadosDAO {
             conex.desconectar();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "no se pudo consultar el Cliente\n" + e);
+            JOptionPane.showMessageDialog(null, "no se pudo consultar el empleado\n" + e);
         }
         return miEmpleado;
     }
-    
+
 }

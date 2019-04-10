@@ -6,7 +6,9 @@
 package banco.dao;
 
 import banco.connection.DbConnection;
+import banco.vo.Clientes;
 import banco.vo.Operaciones;
+import banco.vo.Personas;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -21,7 +23,7 @@ public class OperacionesDAO {
         DbConnection conex = new DbConnection();
         try {
             Statement estatuto = conex.getConnection().createStatement();
-            estatuto.executeUpdate("INSERT INTO cuenta (nombre_depositante, valor, empleado, cliente, transaccion) VALUES ('" + operacion.getDepositante() + "', '" + operacion.getValor() + "', '"
+            estatuto.executeUpdate("INSERT INTO operaciones (nombre_depositante, valor, empleado, cliente, transaccion) VALUES ('" + operacion.getDepositante() + "', '" + operacion.getValor() + "', '"
                     + operacion.getEmpleado() + "', ' " + operacion.getCliente() + "', ' " + operacion.getidTipoTransaccion() + "');");
             JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
@@ -32,6 +34,27 @@ public class OperacionesDAO {
             JOptionPane.showMessageDialog(null, "No se Registro la operacion");
         }
 
+    }
+
+    public String consultarIdCliente(String cuenta) {
+        DbConnection conex = new DbConnection();
+        String id_Cuenta = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT id_cliente FROM clientes \n"
+                    + "INNER JOIN personas\n"
+                    + "ON clientes.persona_id = personas.id_persona \n"
+                    + "INNER JOIN cuentas ON clientes.cuenta = cuentas.id_cuenta and cuentas.numero_cuenta ='" + cuenta + "';");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                id_Cuenta = res.getString("id_cliente");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No Se Pudo Encontrar el Cliente \n" + e);
+        }
+        return id_Cuenta;
     }
 
     public ArrayList<Operaciones> consultarOperacion(int documento) {

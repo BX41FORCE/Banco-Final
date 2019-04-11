@@ -25,16 +25,17 @@ import javax.swing.JOptionPane;
  * @author bcortez
  */
 public class index extends javax.swing.JFrame {
-    
+
     PersonasDAO miPersonaDAO;
     CuentasDAO miCuentaDAO;
     ClientesDAO miClienteDAO;
     EmpleadosDAO miEmpleadoDAO;
     OperacionesDAO miOperacionDAO;
-    
+
     String id_cuenta = "";
     String id_persona = "";
     String id_cliente = "";
+    String saldo = "";
 
     /**
      * Creates new form index
@@ -690,7 +691,7 @@ public class index extends javax.swing.JFrame {
         Personas miPersona = new Personas(this.nombreCliente.getText(), this.apellidoCliente.getText(), sdf.format(fecha));
         miPersonaDAO.registrarPersona(miPersona);
     }
-    
+
     private void generarPersona2() {
         miPersonaDAO = new PersonasDAO();
         Date fecha = this.eFecha.getDate();
@@ -700,23 +701,23 @@ public class index extends javax.swing.JFrame {
         Personas miPersona = new Personas(this.eNombre.getText(), this.eApellido.getText(), sdf.format(fecha));
         miPersonaDAO.registrarPersona(miPersona);
     }
-    
+
     private void generarCuenta() {
         miCuentaDAO = new CuentasDAO();
         Cuentas miCuenta = new Cuentas(0, this.tipoCuenta.getSelectedIndex());
         miCuenta.setNumeroCuenta();
         miCuentaDAO.registrarCuenta(miCuenta);
     }
-    
+
     private void generarCliente() {
         id_persona = miPersonaDAO.consultarIdPersona();
         id_cuenta = miCuentaDAO.consultarIdCuenta();
         miClienteDAO = new ClientesDAO();
         Clientes miCliente = new Clientes(Integer.parseInt(id_persona), Integer.parseInt(id_cuenta));
         miClienteDAO.registrarCliente(miCliente);
-        
+
     }
-    
+
     private void generarEmpleado() {
         id_persona = miPersonaDAO.consultarIdPersona();
         miEmpleadoDAO = new EmpleadosDAO();
@@ -724,7 +725,7 @@ public class index extends javax.swing.JFrame {
         miEmpleado.setCodigo();
         miEmpleadoDAO.registrarEmpleado(miEmpleado);
     }
-    
+
     public void obtenerEmpleados() {
         this.empleadoSeleccion.removeAllItems();
         this.empleadoSeleccion1.removeAllItems();
@@ -746,13 +747,140 @@ public class index extends javax.swing.JFrame {
                     + "existen registros de empleados", "INFORMACIÓN", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+
     private void operacion() {
         id_cliente = miOperacionDAO.consultarIdCliente(this.numeroCuenta.getText());
-        System.out.print(id_cliente);
-        miOperacionDAO = new OperacionesDAO();
-        Operaciones miOperacion = new Operaciones(this.depositante.getText(), (int) this.valor.getValue(), Integer.parseInt(id_cliente), this.empleadoSeleccion.getSelectedIndex(), this.tipoTransaccion.getSelectedIndex());
-        miOperacionDAO.registrarOperacion(miOperacion);
+        int valor = Integer.parseInt(this.valor.getValue().toString());
+        //Validaciones de llenado de Campos
+        //validaciones
+        int comprobacion = 0;
+        int r = 0;
+        if (id_cliente == "") {
+            comprobacion = 7;
+        }
+        if (valor <= 0) {
+            comprobacion = 5;
+        }
+        if (this.depositante.getText().length() == 0) {
+            comprobacion = 4;
+        }
+        if (this.numeroCuenta.getText().length() != 4) {
+            comprobacion = 6;
+        }
+        if (this.numeroCuenta.getText().length() == 0) {
+            comprobacion = 3;
+        } else {
+            r = 1;
+        }
+        if (this.tipoTransaccion.getSelectedIndex() == 0) {
+            comprobacion = 2;
+        }
+        if (this.empleadoSeleccion.getSelectedIndex() == 0) {
+            comprobacion = 1;
+        }
+
+        switch (comprobacion) {
+            case 0:
+                if ("Depósito".equals(this.tipoTransaccion.getSelectedItem().toString())) {
+                    saldo = miOperacionDAO.comprobarSaldo(this.numeroCuenta.getText());
+                    miOperacionDAO = new OperacionesDAO();
+                    Operaciones miOperacion = new Operaciones(this.depositante.getText(), (int) this.valor.getValue(), Integer.parseInt(id_cliente), this.empleadoSeleccion.getSelectedIndex(), this.tipoTransaccion.getSelectedIndex());
+                    int operacion = (Integer.parseInt(saldo) + Integer.parseInt(this.valor.getValue().toString()));
+                    miOperacionDAO.registrarSaldo(operacion, this.numeroCuenta.getText());
+                    JOptionPane.showMessageDialog(null, "DEPÓSITO REALIZADO"
+                            + "\nDepósito realizado a la cuenta N°: " + this.numeroCuenta.getText()
+                            + "\nTitular de la Cuenta: " + "Nombre" + " " + "Apellido"
+                            + "\nHecho por:" + this.depositante.getText()
+                            + "\nA cargo de:" + this.empleadoSeleccion.getSelectedItem().toString()
+                            + "\nValor anterior: $" + saldo + "\nValor Depositado: $" + this.valor.getValue().toString()
+                            + "\nValor del Saldo: $" + operacion);
+                    miOperacionDAO.registrarOperacion(miOperacion);
+                    break;
+                }
+                if ("Retiro".equals(this.tipoTransaccion.getSelectedItem().toString())) {
+                    saldo = miOperacionDAO.comprobarSaldo(this.numeroCuenta.getText());
+                    if (Integer.parseInt(saldo) >= Integer.parseInt(this.valor.getValue().toString())) {
+                        miOperacionDAO = new OperacionesDAO();
+                        Operaciones miOperacion = new Operaciones(this.depositante.getText(), (int) this.valor.getValue(), Integer.parseInt(id_cliente), this.empleadoSeleccion.getSelectedIndex(), this.tipoTransaccion.getSelectedIndex());
+                        int operacion = (Integer.parseInt(saldo) - Integer.parseInt(this.valor.getValue().toString()));
+                        miOperacionDAO.registrarSaldo(operacion, this.numeroCuenta.getText());
+                        JOptionPane.showMessageDialog(null, "RETIRO REALIZADO"
+                                + "\nRetiro realizado a la cuenta N°: " + this.numeroCuenta.getText()
+                                + "\nTitular de la Cuenta: " + "Nombre" + " " + "Apellido"
+                                + "\nHecho por: " + this.depositante.getText()
+                                + "\nA cargo de: " + this.empleadoSeleccion.getSelectedItem().toString()
+                                + "\nValor anterior: $" + saldo + "\nValor Retirado: $" + this.valor.getValue().toString()
+                                + "\nValor del Saldo: $" + operacion);
+                        miOperacionDAO.registrarOperacion(miOperacion);
+                    } else if (Integer.parseInt(saldo) < Integer.parseInt(this.valor.getValue().toString())) {
+                        JOptionPane.showMessageDialog(null, "Saldo en Cuenta Insuficiente\nLa Cuenta posee un saldo de: $" + saldo);
+                    }
+                    break;
+                }
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(null, "Debe Seleccionar a un Empleado");
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Debe Seleccionar un Tipo de Transacción");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(null, "Debe Ingresar un Número de Cuenta");
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(null, "Debe Ingresar el Nombre del Depositante");
+                break;
+            case 5:
+                JOptionPane.showMessageDialog(null, "Debe Ingresar un Valor Válido");
+                break;
+            case 6:
+                JOptionPane.showMessageDialog(null, "Debe Ingresar un Número de Cuenta de 4 Dígitos");
+                break;
+            case 7:
+                JOptionPane.showMessageDialog(null, "Cuenta No Encontrada");
+                break;
+            default:
+                break;
+        }
+        /*
+        switch (r) {
+
+            case 1:
+
+                JOptionPane.showMessageDialog(null, "Cuenta no encontrada");
+
+                break;
+
+            case 2:
+                JOptionPane.showMessageDialog(null, "Transacción realizada a la cuenta N°: " + listaCliente.get(i).getNumeroCuenta()
+                        + "\nNombre del Titular: " + listaCliente.get(i).getNombre() + " " + listaCliente.get(i).getApellido()
+                        + "\nValor anterior: $" + valorprev + "\nValor Ingresado: $" + valor
+                        + "\nValor del Saldo: $" + listaCliente.get(i).getSaldo());
+                this.empleadoSeleccion.setSelectedIndex(0);
+                this.tipoTransaccion.setSelectedIndex(0);
+                this.numeroCuenta.setText("");
+                this.depositante.setText("");
+                this.saldo.setValue(0);
+
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(null, "Transacción realizada a la cuenta N°: " + listaCliente.get(i).getNumeroCuenta()
+                        + "\nNombre del Titular: " + listaCliente.get(i).getNombre() + " " + listaCliente.get(i).getApellido()
+                        + "\nValor anterior: $" + valorprev + "\nValor Retirado: $" + valor
+                        + "\nValor del Saldo: $" + listaCliente.get(i).getSaldo());
+                this.empleadoSeleccion.setSelectedIndex(0);
+                this.tipoTransaccion.setSelectedIndex(0);
+                this.numeroCuenta.setText("");
+                this.depositante.setText("");
+                this.saldo.setValue(0);
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(null, "Saldo insuficiente en la cuenta");
+                break;
+            default:
+                break;
+
+        }*/
     }
 
     /**

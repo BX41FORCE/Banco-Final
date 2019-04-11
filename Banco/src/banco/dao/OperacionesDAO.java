@@ -57,6 +57,38 @@ public class OperacionesDAO {
         return id_Cuenta;
     }
 
+    public String comprobarSaldo(String cuenta) {
+        DbConnection conex = new DbConnection();
+        String Saldo = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT cuentas.saldo FROM cuentas \n"
+                    + "INNER JOIN clientes ON clientes.cuenta = cuentas.id_cuenta AND cuentas.numero_cuenta = '" + cuenta + "';");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                Saldo = res.getString("saldo");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No Se Pudo Encontrar el Cliente \n" + e);
+        }
+        return Saldo;
+    }
+
+    public String registrarSaldo(int valor, String cuenta) {
+        DbConnection conex = new DbConnection();
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("UPDATE cuentas SET saldo = " + valor + " WHERE cuentas.numero_cuenta = '" + cuenta + "';");
+            consulta.executeQuery();
+            consulta.close();
+            conex.desconectar();
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
     public ArrayList<Operaciones> consultarOperacion(int documento) {
         ArrayList<Operaciones> miOperacion = new ArrayList<Operaciones>();
         DbConnection conex = new DbConnection();

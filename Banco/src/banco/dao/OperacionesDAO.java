@@ -76,6 +76,46 @@ public class OperacionesDAO {
         return Saldo;
     }
 
+    public String comprobarTipoCuenta(String cuenta) {
+        DbConnection conex = new DbConnection();
+        String tipo = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT tipo_cuenta.descripcion FROM cuentas \n"
+                    + "INNER JOIN clientes ON clientes.cuenta = cuentas.id_cuenta AND cuentas.numero_cuenta = '" + cuenta + "'\n"
+                    + "INNER JOIN tipo_cuenta ON cuentas.tipo_cuenta = tipo_cuenta.id_tipo_cuenta;");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                tipo = res.getString("descripcion");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No Se Pudo Encontrar el Tipo de Cuenta \n" + e);
+        }
+        return tipo;
+    }
+
+    public String comprobarCliente(String cuenta) {
+        DbConnection conex = new DbConnection();
+        String nombre = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT personas.nombre,personas.apellido FROM cuentas \n"
+                    + "INNER JOIN clientes ON clientes.cuenta = cuentas.id_cuenta AND cuentas.numero_cuenta = '" + cuenta + "'\n"
+                    + "INNER JOIN personas ON clientes.persona_id = personas.id_persona;");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                nombre = res.getString("nombre") + " " + res.getString("apellido");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No Se Pudo Encontrar el Cliente \n" + e);
+        }
+        return nombre;
+    }
+
     public String registrarSaldo(int valor, String cuenta) {
         DbConnection conex = new DbConnection();
         try {

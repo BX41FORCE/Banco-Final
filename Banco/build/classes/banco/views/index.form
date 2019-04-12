@@ -528,7 +528,7 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="numeroCuentaB" max="32767" attributes="0"/>
-                                          <Component id="empleadoSeleccion1" pref="177" max="32767" attributes="0"/>
+                                          <Component id="empleadoSeleccionB" pref="177" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                       <Component id="jButton2" min="-2" pref="120" max="-2" attributes="0"/>
@@ -553,7 +553,7 @@
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="237" max="-2" attributes="0"/>
+                              <Component id="verTodo" min="-2" pref="237" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="15" max="32767" attributes="0"/>
@@ -574,14 +574,14 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="empleadoSeleccion1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="empleadoSeleccionB" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="tipoCuentaB" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="verTodo" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -677,10 +677,13 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="verTodo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ver Todas las Transacciones"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verTodoActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="tipoTransaccionB">
               <Properties>
@@ -705,6 +708,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="numeroCuentaB">
             </Component>
@@ -732,7 +738,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JComboBox" name="empleadoSeleccion1">
+            <Component class="javax.swing.JComboBox" name="empleadoSeleccionB">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">

@@ -57,7 +57,6 @@ public class ReportesDAO {
             res.close();
             consulta.close();
             conex.desconectar();
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "no se pudo consultar la operacion\n" + e);
         }
@@ -91,11 +90,147 @@ public class ReportesDAO {
         return miReporte;
     }
 
+    public ArrayList<Reportes> filtro2() {
+        ArrayList<Reportes> miReporte = new ArrayList<Reportes>();
+        DbConnection conex = new DbConnection();
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM reportes  WHERE tipo_transaccion = 'Retiro';");
+            ResultSet res = consulta.executeQuery();
+            while (res.next()) {
+                Reportes reporte = new Reportes();
+                reporte.setTipoTransaccion(res.getString("tipo_transaccion"));
+                reporte.setTipoCuenta(res.getString("tipo_cuenta"));
+                reporte.setNumeroCuenta(res.getString("numero_cuenta"));
+                reporte.setTitular(res.getString("titular"));
+                reporte.setMonto(res.getString("monto"));
+                reporte.setDepositante(res.getString("depositante"));
+                reporte.setEmpleado(res.getString("empleado"));
+                miReporte.add(reporte);
+            }
+            res.close();
+            consulta.close();
+            conex.desconectar();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo consultar la operacion\n" + e);
+        }
+        return miReporte;
+    }
+
+    public ArrayList<Reportes> filtro3() {
+        ArrayList<Reportes> miReporte = new ArrayList<Reportes>();
+        DbConnection conex = new DbConnection();
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM reportes  WHERE tipo_cuenta = 'Cta.Ahorro';");
+            ResultSet res = consulta.executeQuery();
+            while (res.next()) {
+                Reportes reporte = new Reportes();
+                reporte.setTipoTransaccion(res.getString("tipo_transaccion"));
+                reporte.setTipoCuenta(res.getString("tipo_cuenta"));
+                reporte.setNumeroCuenta(res.getString("numero_cuenta"));
+                reporte.setTitular(res.getString("titular"));
+                reporte.setMonto(res.getString("monto"));
+                reporte.setDepositante(res.getString("depositante"));
+                reporte.setEmpleado(res.getString("empleado"));
+                miReporte.add(reporte);
+            }
+            res.close();
+            consulta.close();
+            conex.desconectar();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo consultar la operacion\n" + e);
+        }
+        return miReporte;
+    }
+
+    public ArrayList<Reportes> filtro4() {
+        ArrayList<Reportes> miReporte = new ArrayList<Reportes>();
+        DbConnection conex = new DbConnection();
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM reportes  WHERE tipo_cuenta = 'Cta.Corriente';");
+            ResultSet res = consulta.executeQuery();
+            while (res.next()) {
+                Reportes reporte = new Reportes();
+                reporte.setTipoTransaccion(res.getString("tipo_transaccion"));
+                reporte.setTipoCuenta(res.getString("tipo_cuenta"));
+                reporte.setNumeroCuenta(res.getString("numero_cuenta"));
+                reporte.setTitular(res.getString("titular"));
+                reporte.setMonto(res.getString("monto"));
+                reporte.setDepositante(res.getString("depositante"));
+                reporte.setEmpleado(res.getString("empleado"));
+                miReporte.add(reporte);
+            }
+            res.close();
+            consulta.close();
+            conex.desconectar();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo consultar la operacion\n" + e);
+        }
+        return miReporte;
+    }
+
     public ArrayList<Reportes> filtro5(String cuenta) {
         ArrayList<Reportes> miReporte = new ArrayList<Reportes>();
         DbConnection conex = new DbConnection();
         try {
             PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM reportes  WHERE numero_cuenta = '" + cuenta + "';");
+            ResultSet res = consulta.executeQuery();
+            while (res.next()) {
+                Reportes reporte = new Reportes();
+                reporte.setTipoTransaccion(res.getString("tipo_transaccion"));
+                reporte.setTipoCuenta(res.getString("tipo_cuenta"));
+                reporte.setNumeroCuenta(res.getString("numero_cuenta"));
+                reporte.setTitular(res.getString("titular"));
+                reporte.setMonto(res.getString("monto"));
+                reporte.setDepositante(res.getString("depositante"));
+                reporte.setEmpleado(res.getString("empleado"));
+                miReporte.add(reporte);
+            }
+            res.close();
+            consulta.close();
+            conex.desconectar();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo consultar la operacion\n" + e);
+        }
+        return miReporte;
+    }
+
+    public ArrayList<Reportes> filtro6(String empleado) {
+        ArrayList<Reportes> miReporte = new ArrayList<Reportes>();
+        DbConnection conex = new DbConnection();
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM reportes  WHERE empleado = '" + empleado + "';");
+            ResultSet res = consulta.executeQuery();
+            while (res.next()) {
+                Reportes reporte = new Reportes();
+                reporte.setTipoTransaccion(res.getString("tipo_transaccion"));
+                reporte.setTipoCuenta(res.getString("tipo_cuenta"));
+                reporte.setNumeroCuenta(res.getString("numero_cuenta"));
+                reporte.setTitular(res.getString("titular"));
+                reporte.setMonto(res.getString("monto"));
+                reporte.setDepositante(res.getString("depositante"));
+                reporte.setEmpleado(res.getString("empleado"));
+                miReporte.add(reporte);
+            }
+            res.close();
+            consulta.close();
+            conex.desconectar();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo consultar la operacion\n" + e);
+        }
+        return miReporte;
+    }
+
+    public ArrayList<Reportes> filtro7(String cuenta, String empleado) {
+        ArrayList<Reportes> miReporte = new ArrayList<Reportes>();
+        DbConnection conex = new DbConnection();
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM reportes  WHERE tipo_transaccion = 'Depósito' \n"
+                    + "AND numero_cuenta = '" + cuenta + "' AND empleado = '" + empleado + "';");
             ResultSet res = consulta.executeQuery();
             while (res.next()) {
                 Reportes reporte = new Reportes();

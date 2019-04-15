@@ -954,15 +954,15 @@ public class index extends javax.swing.JFrame {
         if (texto.length() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")
                 & this.empleadoSeleccionB.getSelectedIndex() != 0) {
             R = 8;
-        }/*
+        }
         if (texto.length() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")
                 & this.tipoCuentaB.getSelectedIndex() != 0
-                & this.empleadoSeleccion1.getSelectedIndex() != 0) {
+                & this.empleadoSeleccionB.getSelectedIndex() != 0) {
             JOptionPane.showMessageDialog(null, "Filtro Innecesario\nYa que el Número de cuenta pertenece a un solo tipo de Cuenta");
         }
         if (texto.length() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")
                 & this.tipoCuentaB.getSelectedIndex() != 0
-                & this.empleadoSeleccion1.getSelectedIndex() != 0) {
+                & this.empleadoSeleccionB.getSelectedIndex() != 0) {
             JOptionPane.showMessageDialog(null, "Filtro Innecesario\nYa que el Número de cuenta pertenece a un solo tipo de Cuenta");
         }
         if (texto.length() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
@@ -971,16 +971,16 @@ public class index extends javax.swing.JFrame {
         if (texto.length() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
             R = 10;
         }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Ahorros")) {
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Ahorros")) {
             R = 11;
         }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente")) {
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente")) {
             R = 12;
         }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
             R = 13;
         }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
             R = 14;
         }
 
@@ -989,25 +989,25 @@ public class index extends javax.swing.JFrame {
         }
         if (this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Ahorros") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
             R = 20;
-        }
+        }/*
         if (this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
             R = 21;
         }
         if (this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
             R = 22;
-        }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Ahorros") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
+        }*/
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Ahorros") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
             R = 15;
         }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Ahorros") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Ahorros") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
             R = 16;
         }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
             R = 17;
         }
-        if (this.empleadoSeleccion1.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
+        if (this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoCuentaB.getSelectedItem().toString().equals("Cta.Corriente") & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
             R = 18;
-        }
+        }/*
         if (texto.length() != 0 & this.empleadoSeleccion1.getSelectedIndex() != 0) {
             R = 23;
         }
@@ -1282,32 +1282,29 @@ public class index extends javax.swing.JFrame {
                 this.totalDeposito.setText("$" + totalD8);
                 this.totalRetiro.setText("$" + totalR8);
                 this.valorTotal.setText("$" + total8);
-                break;/*
+                break;
             case 9:
-                int total9 = 0;
+               int total9 = 0;
                 int totalD9 = 0;
                 int totalR9 = 0;
-                int indiceMatriz9 = 0;
-                matris9 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (listaRegistro.get(i).getCuenta().equals(texto) & listaRegistro.get(i).getTipo().equals("Depósito")) {
-                        matris9[indiceMatriz9][0] = listaRegistro.get(i).getTipo();
-                        matris9[indiceMatriz9][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris9[indiceMatriz9][2] = listaRegistro.get(i).getCuenta();
-                        matris9[indiceMatriz9][3] = listaRegistro.get(i).getTitular();
-                        matris9[indiceMatriz9][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris9[indiceMatriz9][5] = listaRegistro.get(i).getDepositante();
-                        matris9[indiceMatriz9][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz9++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD9 = totalD9 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR9 = totalR9 + listaRegistro.get(i).getSaldo();
-                        }
-                        total9 = total9 + listaRegistro.get(i).getSaldo();
+                String matris9[][] = new String[miReporteDAO.filtro9(cuenta).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro9(cuenta).size(); i++) {
+                    matris9[i][0] = miReporteDAO.filtro9(cuenta).get(i).getTipoTransaccion();
+                    matris9[i][1] = miReporteDAO.filtro9(cuenta).get(i).getTipoCuenta();
+                    matris9[i][2] = miReporteDAO.filtro9(cuenta).get(i).getNumeroCuenta();
+                    matris9[i][3] = miReporteDAO.filtro9(cuenta).get(i).getTitular();
+                    matris9[i][4] = "$" + miReporteDAO.filtro9(cuenta).get(i).getMonto();
+                    matris9[i][5] = miReporteDAO.filtro9(cuenta).get(i).getDepositante();
+                    matris9[i][6] = miReporteDAO.filtro9(cuenta).get(i).getEmpleado();
+                    if (miReporteDAO.filtro9(cuenta).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD9 = totalD9 + Integer.parseInt(miReporteDAO.filtro9(cuenta).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro9(cuenta).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR9 = totalR9 + Integer.parseInt(miReporteDAO.filtro9(cuenta).get(i).getMonto());
+                    }
+                    total9 = total9 + Integer.parseInt(miReporteDAO.filtro9(cuenta).get(i).getMonto());
                 }
+                ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
                         matris9,
                         new String[]{
@@ -1322,27 +1319,24 @@ public class index extends javax.swing.JFrame {
                 int total10 = 0;
                 int totalD10 = 0;
                 int totalR10 = 0;
-                int indiceMatriz10 = 0;
-                matris10 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (listaRegistro.get(i).getCuenta().equals(texto) & listaRegistro.get(i).getTipo().equals("Retiro")) {
-                        matris10[indiceMatriz10][0] = listaRegistro.get(i).getTipo();
-                        matris10[indiceMatriz10][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris10[indiceMatriz10][2] = listaRegistro.get(i).getCuenta();
-                        matris10[indiceMatriz10][3] = listaRegistro.get(i).getTitular();
-                        matris10[indiceMatriz10][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris10[indiceMatriz10][5] = listaRegistro.get(i).getDepositante();
-                        matris10[indiceMatriz10][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz10++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD10 = totalD10 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR10 = totalR10 + listaRegistro.get(i).getSaldo();
-                        }
-                        total10 = total10 + listaRegistro.get(i).getSaldo();
+                String matris10[][] = new String[miReporteDAO.filtro10(cuenta).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro10(cuenta).size(); i++) {
+                    matris10[i][0] = miReporteDAO.filtro10(cuenta).get(i).getTipoTransaccion();
+                    matris10[i][1] = miReporteDAO.filtro10(cuenta).get(i).getTipoCuenta();
+                    matris10[i][2] = miReporteDAO.filtro10(cuenta).get(i).getNumeroCuenta();
+                    matris10[i][3] = miReporteDAO.filtro10(cuenta).get(i).getTitular();
+                    matris10[i][4] = "$" + miReporteDAO.filtro10(cuenta).get(i).getMonto();
+                    matris10[i][5] = miReporteDAO.filtro10(cuenta).get(i).getDepositante();
+                    matris10[i][6] = miReporteDAO.filtro10(cuenta).get(i).getEmpleado();
+                    if (miReporteDAO.filtro10(cuenta).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD10 = totalD10 + Integer.parseInt(miReporteDAO.filtro10(cuenta).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro10(cuenta).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR10 = totalR10 + Integer.parseInt(miReporteDAO.filtro10(cuenta).get(i).getMonto());
+                    }
+                    total10 = total10 + Integer.parseInt(miReporteDAO.filtro10(cuenta).get(i).getMonto());
                 }
+                ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
                         matris10,
                         new String[]{
@@ -1357,26 +1351,22 @@ public class index extends javax.swing.JFrame {
                 int total11 = 0;
                 int totalD11 = 0;
                 int totalR11 = 0;
-                int indiceMatriz11 = 0;
-                matris11 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipoCuenta().equals("Cta.Ahorros")) {
-                        matris11[indiceMatriz11][0] = listaRegistro.get(i).getTipo();
-                        matris11[indiceMatriz11][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris11[indiceMatriz11][2] = listaRegistro.get(i).getCuenta();
-                        matris11[indiceMatriz11][3] = listaRegistro.get(i).getTitular();
-                        matris11[indiceMatriz11][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris11[indiceMatriz11][5] = listaRegistro.get(i).getDepositante();
-                        matris11[indiceMatriz11][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz11++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD11 = totalD11 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR11 = totalR11 + listaRegistro.get(i).getSaldo();
-                        }
-                        total11 = total11 + listaRegistro.get(i).getSaldo();
+                String matris11[][] = new String[miReporteDAO.filtro11(empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro11(empleado).size(); i++) {
+                    matris11[i][0] = miReporteDAO.filtro11(empleado).get(i).getTipoTransaccion();
+                    matris11[i][1] = miReporteDAO.filtro11(empleado).get(i).getTipoCuenta();
+                    matris11[i][2] = miReporteDAO.filtro11(empleado).get(i).getNumeroCuenta();
+                    matris11[i][3] = miReporteDAO.filtro11(empleado).get(i).getTitular();
+                    matris11[i][4] = "$" + miReporteDAO.filtro11(empleado).get(i).getMonto();
+                    matris11[i][5] = miReporteDAO.filtro11(empleado).get(i).getDepositante();
+                    matris11[i][6] = miReporteDAO.filtro11(empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro11(empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD11 = totalD11 + Integer.parseInt(miReporteDAO.filtro11(empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro11(empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR11 = totalR11 + Integer.parseInt(miReporteDAO.filtro11(empleado).get(i).getMonto());
+                    }
+                    total11 = total11 + Integer.parseInt(miReporteDAO.filtro11(empleado).get(i).getMonto());
                 }
                 ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -1393,27 +1383,24 @@ public class index extends javax.swing.JFrame {
                 int total12 = 0;
                 int totalD12 = 0;
                 int totalR12 = 0;
-                int indiceMatriz12 = 0;
-                matris12 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipoCuenta().equals("Cta.Corriente")) {
-                        matris12[indiceMatriz12][0] = listaRegistro.get(i).getTipo();
-                        matris12[indiceMatriz12][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris12[indiceMatriz12][2] = listaRegistro.get(i).getCuenta();
-                        matris12[indiceMatriz12][3] = listaRegistro.get(i).getTitular();
-                        matris12[indiceMatriz12][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris12[indiceMatriz12][5] = listaRegistro.get(i).getDepositante();
-                        matris12[indiceMatriz12][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz12++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD12 = totalD12 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR12 = totalR12 + listaRegistro.get(i).getSaldo();
-                        }
-                        total12 = total12 + listaRegistro.get(i).getSaldo();
+                String matris12[][] = new String[miReporteDAO.filtro12(empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro12(empleado).size(); i++) {
+                    matris12[i][0] = miReporteDAO.filtro12(empleado).get(i).getTipoTransaccion();
+                    matris12[i][1] = miReporteDAO.filtro12(empleado).get(i).getTipoCuenta();
+                    matris12[i][2] = miReporteDAO.filtro12(empleado).get(i).getNumeroCuenta();
+                    matris12[i][3] = miReporteDAO.filtro12(empleado).get(i).getTitular();
+                    matris12[i][4] = "$" + miReporteDAO.filtro12(empleado).get(i).getMonto();
+                    matris12[i][5] = miReporteDAO.filtro12(empleado).get(i).getDepositante();
+                    matris12[i][6] = miReporteDAO.filtro12(empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro12(empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD12 = totalD12 + Integer.parseInt(miReporteDAO.filtro12(empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro12(empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR12 = totalR12 + Integer.parseInt(miReporteDAO.filtro12(empleado).get(i).getMonto());
+                    }
+                    total12 = total12 + Integer.parseInt(miReporteDAO.filtro12(empleado).get(i).getMonto());
                 }
+                ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
                         matris12,
                         new String[]{
@@ -1428,26 +1415,22 @@ public class index extends javax.swing.JFrame {
                 int total13 = 0;
                 int totalD13 = 0;
                 int totalR13 = 0;
-                int indiceMatriz13 = 0;
-                matris13 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipo().equals("Depósito")) {
-                        matris13[indiceMatriz13][0] = listaRegistro.get(i).getTipo();
-                        matris13[indiceMatriz13][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris13[indiceMatriz13][2] = listaRegistro.get(i).getCuenta();
-                        matris13[indiceMatriz13][3] = listaRegistro.get(i).getTitular();
-                        matris13[indiceMatriz13][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris13[indiceMatriz13][5] = listaRegistro.get(i).getDepositante();
-                        matris13[indiceMatriz13][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz13++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD13 = totalD13 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR13 = totalR13 + listaRegistro.get(i).getSaldo();
-                        }
-                        total13 = total13 + listaRegistro.get(i).getSaldo();
+                String matris13[][] = new String[miReporteDAO.filtro13(empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro13(empleado).size(); i++) {
+                    matris13[i][0] = miReporteDAO.filtro13(empleado).get(i).getTipoTransaccion();
+                    matris13[i][1] = miReporteDAO.filtro13(empleado).get(i).getTipoCuenta();
+                    matris13[i][2] = miReporteDAO.filtro13(empleado).get(i).getNumeroCuenta();
+                    matris13[i][3] = miReporteDAO.filtro13(empleado).get(i).getTitular();
+                    matris13[i][4] = "$" + miReporteDAO.filtro13(empleado).get(i).getMonto();
+                    matris13[i][5] = miReporteDAO.filtro13(empleado).get(i).getDepositante();
+                    matris13[i][6] = miReporteDAO.filtro13(empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro13(empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD13 = totalD13 + Integer.parseInt(miReporteDAO.filtro13(empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro13(empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR13 = totalR13 + Integer.parseInt(miReporteDAO.filtro13(empleado).get(i).getMonto());
+                    }
+                    total13 = total13 + Integer.parseInt(miReporteDAO.filtro13(empleado).get(i).getMonto());
                 }
                 ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -1464,27 +1447,24 @@ public class index extends javax.swing.JFrame {
                 int total14 = 0;
                 int totalD14 = 0;
                 int totalR14 = 0;
-                int indiceMatriz14 = 0;
-                matris14 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipo().equals("Retiro")) {
-                        matris14[indiceMatriz14][0] = listaRegistro.get(i).getTipo();
-                        matris14[indiceMatriz14][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris14[indiceMatriz14][2] = listaRegistro.get(i).getCuenta();
-                        matris14[indiceMatriz14][3] = listaRegistro.get(i).getTitular();
-                        matris14[indiceMatriz14][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris14[indiceMatriz14][5] = listaRegistro.get(i).getDepositante();
-                        matris14[indiceMatriz14][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz14++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD14 = totalD14 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR14 = totalR14 + listaRegistro.get(i).getSaldo();
-                        }
-                        total14 = total14 + listaRegistro.get(i).getSaldo();
+                String matris14[][] = new String[miReporteDAO.filtro14(empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro14(empleado).size(); i++) {
+                    matris14[i][0] = miReporteDAO.filtro14(empleado).get(i).getTipoTransaccion();
+                    matris14[i][1] = miReporteDAO.filtro14(empleado).get(i).getTipoCuenta();
+                    matris14[i][2] = miReporteDAO.filtro14(empleado).get(i).getNumeroCuenta();
+                    matris14[i][3] = miReporteDAO.filtro14(empleado).get(i).getTitular();
+                    matris14[i][4] = "$" + miReporteDAO.filtro14(empleado).get(i).getMonto();
+                    matris14[i][5] = miReporteDAO.filtro14(empleado).get(i).getDepositante();
+                    matris14[i][6] = miReporteDAO.filtro14(empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro14(empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD14 = totalD14 + Integer.parseInt(miReporteDAO.filtro14(empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro14(empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR14 = totalR14 + Integer.parseInt(miReporteDAO.filtro14(empleado).get(i).getMonto());
+                    }
+                    total14 = total14 + Integer.parseInt(miReporteDAO.filtro14(empleado).get(i).getMonto());
                 }
+                ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
                         matris14,
                         new String[]{
@@ -1499,27 +1479,24 @@ public class index extends javax.swing.JFrame {
                 int total15 = 0;
                 int totalD15 = 0;
                 int totalR15 = 0;
-                int indiceMatriz15 = 0;
-                matris15 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipoCuenta().equals("Cta.Ahorros") & listaRegistro.get(i).getTipo().equals("Depósito")) {
-                        matris15[indiceMatriz15][0] = listaRegistro.get(i).getTipo();
-                        matris15[indiceMatriz15][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris15[indiceMatriz15][2] = listaRegistro.get(i).getCuenta();
-                        matris15[indiceMatriz15][3] = listaRegistro.get(i).getTitular();
-                        matris15[indiceMatriz15][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris15[indiceMatriz15][5] = listaRegistro.get(i).getDepositante();
-                        matris15[indiceMatriz15][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz15++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD15 = totalD15 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR15 = totalR15 + listaRegistro.get(i).getSaldo();
-                        }
-                        total15 = total15 + listaRegistro.get(i).getSaldo();
+                String matris15[][] = new String[miReporteDAO.filtro15(cuenta, empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro15(cuenta, empleado).size(); i++) {
+                    matris15[i][0] = miReporteDAO.filtro15(cuenta, empleado).get(i).getTipoTransaccion();
+                    matris15[i][1] = miReporteDAO.filtro15(cuenta, empleado).get(i).getTipoCuenta();
+                    matris15[i][2] = miReporteDAO.filtro15(cuenta, empleado).get(i).getNumeroCuenta();
+                    matris15[i][3] = miReporteDAO.filtro15(cuenta, empleado).get(i).getTitular();
+                    matris15[i][4] = "$" + miReporteDAO.filtro15(cuenta, empleado).get(i).getMonto();
+                    matris15[i][5] = miReporteDAO.filtro15(cuenta, empleado).get(i).getDepositante();
+                    matris15[i][6] = miReporteDAO.filtro15(cuenta, empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro15(cuenta, empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD15 = totalD15 + Integer.parseInt(miReporteDAO.filtro15(cuenta, empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro15(cuenta, empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR15 = totalR15 + Integer.parseInt(miReporteDAO.filtro15(cuenta, empleado).get(i).getMonto());
+                    }
+                    total15 = total15 + Integer.parseInt(miReporteDAO.filtro15(cuenta, empleado).get(i).getMonto());
                 }
+                ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
                         matris15,
                         new String[]{
@@ -1534,27 +1511,24 @@ public class index extends javax.swing.JFrame {
                 int total16 = 0;
                 int totalD16 = 0;
                 int totalR16 = 0;
-                int indiceMatriz16 = 0;
-                matris16 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipoCuenta().equals("Cta.Ahorros") & listaRegistro.get(i).getTipo().equals("Retiro")) {
-                        matris16[indiceMatriz16][0] = listaRegistro.get(i).getTipo();
-                        matris16[indiceMatriz16][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris16[indiceMatriz16][2] = listaRegistro.get(i).getCuenta();
-                        matris16[indiceMatriz16][3] = listaRegistro.get(i).getTitular();
-                        matris16[indiceMatriz16][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris16[indiceMatriz16][5] = listaRegistro.get(i).getDepositante();
-                        matris16[indiceMatriz16][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz16++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD16 = totalD16 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR16 = totalR16 + listaRegistro.get(i).getSaldo();
-                        }
-                        total16 = total16 + listaRegistro.get(i).getSaldo();
+                String matris16[][] = new String[miReporteDAO.filtro16(empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro16(empleado).size(); i++) {
+                    matris16[i][0] = miReporteDAO.filtro16(empleado).get(i).getTipoTransaccion();
+                    matris16[i][1] = miReporteDAO.filtro16(empleado).get(i).getTipoCuenta();
+                    matris16[i][2] = miReporteDAO.filtro16(empleado).get(i).getNumeroCuenta();
+                    matris16[i][3] = miReporteDAO.filtro16(empleado).get(i).getTitular();
+                    matris16[i][4] = "$" + miReporteDAO.filtro16(empleado).get(i).getMonto();
+                    matris16[i][5] = miReporteDAO.filtro16(empleado).get(i).getDepositante();
+                    matris16[i][6] = miReporteDAO.filtro16(empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro16(empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD16 = totalD16 + Integer.parseInt(miReporteDAO.filtro16(empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro16(empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR16 = totalR16 + Integer.parseInt(miReporteDAO.filtro16(empleado).get(i).getMonto());
+                    }
+                    total16 = total16 + Integer.parseInt(miReporteDAO.filtro16(empleado).get(i).getMonto());
                 }
+                ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
                         matris16,
                         new String[]{
@@ -1569,27 +1543,24 @@ public class index extends javax.swing.JFrame {
                 int total17 = 0;
                 int totalD17 = 0;
                 int totalR17 = 0;
-                int indiceMatriz17 = 0;
-                matris17 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipoCuenta().equals("Cta.Corriente") & listaRegistro.get(i).getTipo().equals("Depósito")) {
-                        matris17[indiceMatriz17][0] = listaRegistro.get(i).getTipo();
-                        matris17[indiceMatriz17][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris17[indiceMatriz17][2] = listaRegistro.get(i).getCuenta();
-                        matris17[indiceMatriz17][3] = listaRegistro.get(i).getTitular();
-                        matris17[indiceMatriz17][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris17[indiceMatriz17][5] = listaRegistro.get(i).getDepositante();
-                        matris17[indiceMatriz17][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz17++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD17 = totalD17 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR17 = totalR17 + listaRegistro.get(i).getSaldo();
-                        }
-                        total17 = total17 + listaRegistro.get(i).getSaldo();
+                String matris17[][] = new String[miReporteDAO.filtro17(empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro17(empleado).size(); i++) {
+                    matris17[i][0] = miReporteDAO.filtro17(empleado).get(i).getTipoTransaccion();
+                    matris17[i][1] = miReporteDAO.filtro17(empleado).get(i).getTipoCuenta();
+                    matris17[i][2] = miReporteDAO.filtro17(empleado).get(i).getNumeroCuenta();
+                    matris17[i][3] = miReporteDAO.filtro17(empleado).get(i).getTitular();
+                    matris17[i][4] = "$" + miReporteDAO.filtro17(empleado).get(i).getMonto();
+                    matris17[i][5] = miReporteDAO.filtro17(empleado).get(i).getDepositante();
+                    matris17[i][6] = miReporteDAO.filtro17(empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro17(empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD17 = totalD17 + Integer.parseInt(miReporteDAO.filtro17(empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro17(empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR17 = totalR17 + Integer.parseInt(miReporteDAO.filtro17(empleado).get(i).getMonto());
+                    }
+                    total17 = total17 + Integer.parseInt(miReporteDAO.filtro17(empleado).get(i).getMonto());
                 }
+                ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
                         matris17,
                         new String[]{
@@ -1604,26 +1575,22 @@ public class index extends javax.swing.JFrame {
                 int total18 = 0;
                 int totalD18 = 0;
                 int totalR18 = 0;
-                int indiceMatriz18 = 0;
-                matris18 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (this.empleadoSeleccion1.getSelectedItem().toString().equals(listaRegistro.get(i).getEmpleado()) & listaRegistro.get(i).getTipoCuenta().equals("Cta.Corriente") & listaRegistro.get(i).getTipo().equals("Retiro")) {
-                        matris18[indiceMatriz18][0] = listaRegistro.get(i).getTipo();
-                        matris18[indiceMatriz18][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris18[indiceMatriz18][2] = listaRegistro.get(i).getCuenta();
-                        matris18[indiceMatriz18][3] = listaRegistro.get(i).getTitular();
-                        matris18[indiceMatriz18][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris18[indiceMatriz18][5] = listaRegistro.get(i).getDepositante();
-                        matris18[indiceMatriz18][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz18++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD18 = totalD18 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR18 = totalR18 + listaRegistro.get(i).getSaldo();
-                        }
-                        total18 = total18 + listaRegistro.get(i).getSaldo();
+                String matris18[][] = new String[miReporteDAO.filtro18(empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro18(empleado).size(); i++) {
+                    matris18[i][0] = miReporteDAO.filtro18(empleado).get(i).getTipoTransaccion();
+                    matris18[i][1] = miReporteDAO.filtro18(empleado).get(i).getTipoCuenta();
+                    matris18[i][2] = miReporteDAO.filtro18(empleado).get(i).getNumeroCuenta();
+                    matris18[i][3] = miReporteDAO.filtro18(empleado).get(i).getTitular();
+                    matris18[i][4] = "$" + miReporteDAO.filtro18(empleado).get(i).getMonto();
+                    matris18[i][5] = miReporteDAO.filtro18(empleado).get(i).getDepositante();
+                    matris18[i][6] = miReporteDAO.filtro18(empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro18(empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD18 = totalD18 + Integer.parseInt(miReporteDAO.filtro18(empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro18(empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR18 = totalR18 + Integer.parseInt(miReporteDAO.filtro18(empleado).get(i).getMonto());
+                    }
+                    total18 = total18 + Integer.parseInt(miReporteDAO.filtro18(empleado).get(i).getMonto());
                 }
                 ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -1640,26 +1607,22 @@ public class index extends javax.swing.JFrame {
                 int total19 = 0;
                 int totalD19 = 0;
                 int totalR19 = 0;
-                int indiceMatriz19 = 0;
-                matris19 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (listaRegistro.get(i).getTipoCuenta().equals("Cta.Ahorros") & listaRegistro.get(i).getTipo().equals("Depósito")) {
-                        matris19[indiceMatriz19][0] = listaRegistro.get(i).getTipo();
-                        matris19[indiceMatriz19][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris19[indiceMatriz19][2] = listaRegistro.get(i).getCuenta();
-                        matris19[indiceMatriz19][3] = listaRegistro.get(i).getTitular();
-                        matris19[indiceMatriz19][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris19[indiceMatriz19][5] = listaRegistro.get(i).getDepositante();
-                        matris19[indiceMatriz19][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz19++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD19 = totalD19 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR19 = totalR19 + listaRegistro.get(i).getSaldo();
-                        }
-                        total19 = total19 + listaRegistro.get(i).getSaldo();
+                String matris19[][] = new String[miReporteDAO.filtro19(cuenta, empleado).size()][7];
+                for (int i = 0; i < miReporteDAO.filtro19(cuenta, empleado).size(); i++) {
+                    matris19[i][0] = miReporteDAO.filtro19(cuenta, empleado).get(i).getTipoTransaccion();
+                    matris19[i][1] = miReporteDAO.filtro19(cuenta, empleado).get(i).getTipoCuenta();
+                    matris19[i][2] = miReporteDAO.filtro19(cuenta, empleado).get(i).getNumeroCuenta();
+                    matris19[i][3] = miReporteDAO.filtro19(cuenta, empleado).get(i).getTitular();
+                    matris19[i][4] = "$" + miReporteDAO.filtro19(cuenta, empleado).get(i).getMonto();
+                    matris19[i][5] = miReporteDAO.filtro19(cuenta, empleado).get(i).getDepositante();
+                    matris19[i][6] = miReporteDAO.filtro19(cuenta, empleado).get(i).getEmpleado();
+                    if (miReporteDAO.filtro19(cuenta, empleado).get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD19 = totalD19 + Integer.parseInt(miReporteDAO.filtro19(cuenta, empleado).get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro19(cuenta, empleado).get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR19 = totalR19 + Integer.parseInt(miReporteDAO.filtro19(cuenta, empleado).get(i).getMonto());
+                    }
+                    total19 = total19 + Integer.parseInt(miReporteDAO.filtro19(cuenta, empleado).get(i).getMonto());
                 }
                 ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -1676,26 +1639,22 @@ public class index extends javax.swing.JFrame {
                 int total20 = 0;
                 int totalD20 = 0;
                 int totalR20 = 0;
-                int indiceMatriz20 = 0;
-                matris20 = new String[listaRegistro.size()][7];
-                for (int i = 0; i < listaRegistro.size(); i++) {
-                    if (listaRegistro.get(i).getTipoCuenta().equals("Cta.Ahorros") & listaRegistro.get(i).getTipo().equals("Retiro")) {
-                        matris20[indiceMatriz20][0] = listaRegistro.get(i).getTipo();
-                        matris20[indiceMatriz20][1] = listaRegistro.get(i).getTipoCuenta();
-                        matris20[indiceMatriz20][2] = listaRegistro.get(i).getCuenta();
-                        matris20[indiceMatriz20][3] = listaRegistro.get(i).getTitular();
-                        matris20[indiceMatriz20][4] = "$" + listaRegistro.get(i).getSaldo() + "";
-                        matris20[indiceMatriz20][5] = listaRegistro.get(i).getDepositante();
-                        matris20[indiceMatriz20][6] = listaRegistro.get(i).getEmpleado();
-                        indiceMatriz20++;
-                        if (listaRegistro.get(i).getTipo().equals("Depósito")) {
-                            totalD20 = totalD20 + listaRegistro.get(i).getSaldo();
-                        }
-                        if (listaRegistro.get(i).getTipo().equals("Retiro")) {
-                            totalR20 = totalR20 + listaRegistro.get(i).getSaldo();
-                        }
-                        total20 = total20 + listaRegistro.get(i).getSaldo();
+                String matris20[][] = new String[miReporteDAO.filtro20().size()][7];
+                for (int i = 0; i < miReporteDAO.filtro20().size(); i++) {
+                    matris20[i][0] = miReporteDAO.filtro20().get(i).getTipoTransaccion();
+                    matris20[i][1] = miReporteDAO.filtro20().get(i).getTipoCuenta();
+                    matris20[i][2] = miReporteDAO.filtro20().get(i).getNumeroCuenta();
+                    matris20[i][3] = miReporteDAO.filtro20().get(i).getTitular();
+                    matris20[i][4] = "$" + miReporteDAO.filtro20().get(i).getMonto();
+                    matris20[i][5] = miReporteDAO.filtro20().get(i).getDepositante();
+                    matris20[i][6] = miReporteDAO.filtro20().get(i).getEmpleado();
+                    if (miReporteDAO.filtro20().get(i).getTipoTransaccion().equals("Depósito")) {
+                        totalD20 = totalD20 + Integer.parseInt(miReporteDAO.filtro20().get(i).getMonto());
                     }
+                    if (miReporteDAO.filtro20().get(i).getTipoTransaccion().equals("Retiro")) {
+                        totalR20 = totalR20 + Integer.parseInt(miReporteDAO.filtro20().get(i).getMonto());
+                    }
+                    total20 = total20 + Integer.parseInt(miReporteDAO.filtro20().get(i).getMonto());
                 }
                 ;
                 Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -1707,7 +1666,7 @@ public class index extends javax.swing.JFrame {
                 this.totalDeposito.setText("$" + totalD20);
                 this.totalRetiro.setText("$" + totalR20);
                 this.valorTotal.setText("$" + total20);
-                break;
+                break;/*
             case 21:
                 int total21 = 0;
                 int totalD21 = 0;

@@ -1,0 +1,1 @@
+SELECT * FROM reportes WHERE tipo_cuenta = 'Cta.Corriente' AND tipo_transaccion = 'Retiro';

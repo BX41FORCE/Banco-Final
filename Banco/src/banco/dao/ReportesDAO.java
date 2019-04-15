@@ -26,7 +26,7 @@ public class ReportesDAO {
             Statement estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO reportes (tipo_transaccion,tipo_cuenta,numero_cuenta,titular,monto,depositante,empleado)\n"
                     + "VALUES ('" + reporte.getTipoTransaccion() + "','" + reporte.getTipoCuenta() + "','" + reporte.getNumeroCuenta() + "','" + reporte.getTitular() + "','" + reporte.getMonto() + "','" + reporte.getDepositante() + "','" + reporte.getEmpleado() + "');");
-            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+          //  JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
 

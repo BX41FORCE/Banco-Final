@@ -23,7 +23,7 @@ public class CuentasDAO {
             Statement estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO cuentas (numero_cuenta, saldo, tipo_cuenta) VALUES ('" + cuenta.getNumeroCuenta() + "', '" + cuenta.getSaldo() + "', '"
                     + cuenta.getIdTipoCuenta() + "');");
-            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+       //     JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
 
@@ -48,6 +48,24 @@ public class CuentasDAO {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "no se pudo enlazar a la cuenta\n" + e);
+        }
+        return id_Cuenta;
+    }
+
+    public String consultarNumeroCuenta() {
+        DbConnection conex = new DbConnection();
+        String id_Cuenta = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT numero_cuenta FROM cuentas ORDER BY id_cuenta DESC LIMIT 1;");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                id_Cuenta = res.getString("numero_cuenta");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo consultar la cuenta\n" + e);
         }
         return id_Cuenta;
     }

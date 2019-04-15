@@ -153,10 +153,15 @@ public class index extends javax.swing.JFrame {
         cancelar.setBackground(new java.awt.Color(187, 26, 41));
         cancelar.setForeground(new java.awt.Color(255, 255, 255));
         cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Tipo de Cuenta");
 
-        tipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Cta.Ahorros", "Cta.Corriente" }));
+        tipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Cta.Ahorro", "Cta.Corriente" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -464,6 +469,11 @@ public class index extends javax.swing.JFrame {
         jScrollPane2.setViewportView(valorTotal);
 
         limpiarFiltros.setText("Limpiar Filtros");
+        limpiarFiltros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarFiltrosActionPerformed(evt);
+            }
+        });
 
         jLabel22.setText("Total de Depósitos:");
 
@@ -607,6 +617,11 @@ public class index extends javax.swing.JFrame {
         cancelarEmpleado.setBackground(new java.awt.Color(187, 26, 41));
         cancelarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         cancelarEmpleado.setText("Cancelar");
+        cancelarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarEmpleadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -684,15 +699,81 @@ public class index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        generarPersona();
-        generarCuenta();
-        generarCliente();
+        int comprobacion = 0;
+
+        if (this.tipoCuenta.getSelectedIndex() == 0) {
+            comprobacion = 4;
+        }
+        if (this.fechaCliente.getDate() == null) {
+            comprobacion = 3;
+        }
+        if (this.apellidoCliente.getText().length() == 0) {
+            comprobacion = 2;
+        }
+        if (this.nombreCliente.getText().length() == 0) {
+            comprobacion = 1;
+        }
+
+        switch (comprobacion) {
+            case 0:
+                generarPersona();
+                generarCuenta();
+                generarCliente();
+                this.nombreCliente.setText("");
+                this.apellidoCliente.setText("");
+                this.fechaCliente.setDate(null);
+                this.tipoCuenta.setSelectedIndex(0);
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(null, "Debe ingresar un Nombre");
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Debe ingresar un Apellido");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(null, "Debe seleccionar una Fecha");
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un Tipo de Cuenta");
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void Regsitrar_EmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Regsitrar_EmpleadoActionPerformed
-        generarPersona2();
-        generarEmpleado();
-        obtenerEmpleados();
+        int comprobacion = 0;
+
+        if (this.eFecha.getDate() == null) {
+            comprobacion = 3;
+        }
+        if (this.eApellido.getText().length() == 0) {
+            comprobacion = 2;
+        }
+        if (this.eNombre.getText().length() == 0) {
+            comprobacion = 1;
+        }
+        switch (comprobacion) {
+            case 0:
+                generarPersona2();
+                generarEmpleado();
+                obtenerEmpleados();
+                this.eNombre.setText("");
+                this.eApellido.setText("");
+                this.eFecha.setDate(null);
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(null, "Debe ingresar un Nombre");
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Debe ingresar un Apellido");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(null, "Debe seleccionar una Fecha");
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_Regsitrar_EmpleadoActionPerformed
 
     private void transaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transaccionActionPerformed
@@ -706,6 +787,26 @@ public class index extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         buscar();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        this.nombreCliente.setText("");
+        this.apellidoCliente.setText("");
+        this.fechaCliente.setDate(null);
+        this.tipoCuenta.setSelectedIndex(0);
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void cancelarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarEmpleadoActionPerformed
+        this.eNombre.setText("");
+        this.eApellido.setText("");
+        this.eFecha.setDate(null);
+    }//GEN-LAST:event_cancelarEmpleadoActionPerformed
+
+    private void limpiarFiltrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarFiltrosActionPerformed
+        this.numeroCuentaB.setText("");
+        this.empleadoSeleccionB.setSelectedIndex(0);
+        this.tipoCuentaB.setSelectedIndex(0);
+        this.tipoTransaccionB.setSelectedIndex(0);
+    }//GEN-LAST:event_limpiarFiltrosActionPerformed
     private void generarPersona() {
         miPersonaDAO = new PersonasDAO();
         Date fecha = this.fechaCliente.getDate();
@@ -739,7 +840,16 @@ public class index extends javax.swing.JFrame {
         miClienteDAO = new ClientesDAO();
         Clientes miCliente = new Clientes(Integer.parseInt(id_persona), Integer.parseInt(id_cuenta));
         miClienteDAO.registrarCliente(miCliente);
-
+        String cuenta = miCuentaDAO.consultarNumeroCuenta();
+        String edad = miPersonaDAO.consultarEdadPersona();
+        String fecha = miPersonaDAO.consultarFechaPersona();
+        JOptionPane.showMessageDialog(null, "Por Favor Anote su Número de Cuenta");
+        JOptionPane.showMessageDialog(null, "Cliente Registrado\n"
+                + "Tipo de Cuenta: " + this.tipoCuenta.getSelectedItem().toString() + "\n"
+                + "Número de Cuenta: " + cuenta + "\n"
+                + "Titular de Cuenta: " + this.nombreCliente.getText() + " " + this.apellidoCliente.getText() + "\n"
+                + "Fecha de Nacimiento: " + fecha + "\n"
+                + "Edad: " + edad);
     }
 
     private void generarEmpleado() {
@@ -748,6 +858,14 @@ public class index extends javax.swing.JFrame {
         Empleados miEmpleado = new Empleados(Integer.parseInt(id_persona));
         miEmpleado.setCodigo();
         miEmpleadoDAO.registrarEmpleado(miEmpleado);
+        String codigo = miEmpleadoDAO.consultarCodigo();
+        String edad = miPersonaDAO.consultarEdadPersona();
+        String fecha = miPersonaDAO.consultarFechaPersona();
+        JOptionPane.showMessageDialog(null, "Empleado Registrado\n"
+                + "Código: " + codigo + "\n"
+                + "Nombre: " + this.eNombre.getText() + " " + this.eApellido.getText() + "\n"
+                + "Fecha de Nacimiento: " + fecha + "\n"
+                + "Edad: " + edad);
     }
 
     public void obtenerEmpleados() {
@@ -823,6 +941,11 @@ public class index extends javax.swing.JFrame {
                     miReporteDAO.registrarReporte(miReporte);
                     miOperacionDAO.registrarOperacion(miOperacion);
                     miOperacionDAO.registrarSaldo(operacion, this.numeroCuenta.getText());
+                    this.numeroCuenta.setText("");
+                    this.depositante.setText("");
+                    this.valor.setValue(0);
+                    this.empleadoSeleccion.setSelectedIndex(0);
+                    this.tipoTransaccion.setSelectedIndex(0);
                     break;
                 }
                 if ("Retiro".equals(this.tipoTransaccion.getSelectedItem().toString())) {
@@ -847,6 +970,11 @@ public class index extends javax.swing.JFrame {
                         miReporteDAO.registrarReporte(miReporte);
                         miOperacionDAO.registrarOperacion(miOperacion);
                         miOperacionDAO.registrarSaldo(operacion, this.numeroCuenta.getText());
+                        this.numeroCuenta.setText("");
+                        this.depositante.setText("");
+                        this.valor.setValue(0);
+                        this.empleadoSeleccion.setSelectedIndex(0);
+                        this.tipoTransaccion.setSelectedIndex(0);
                     } else if (Integer.parseInt(saldo) < Integer.parseInt(this.valor.getValue().toString())) {
                         JOptionPane.showMessageDialog(null, "Saldo en Cuenta Insuficiente\nLa Cuenta posee un saldo de: $" + saldo);
                     }
@@ -928,6 +1056,7 @@ public class index extends javax.swing.JFrame {
         } else if (this.tipoTransaccionB.getSelectedIndex() == 2) {
             transaccion = "Retiro";
         };
+
         if (this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
             R = 1;
         }
@@ -966,6 +1095,9 @@ public class index extends javax.swing.JFrame {
                 & this.empleadoSeleccionB.getSelectedIndex() != 0) {
             JOptionPane.showMessageDialog(null, "Filtro Innecesario\nYa que el Número de cuenta pertenece a un solo tipo de Cuenta");
         }
+        /*  if (id_cliente == "") {
+            R = 26;
+        }*/
         if (texto.length() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Depositos")) {
             R = 9;
         }
@@ -1017,9 +1149,6 @@ public class index extends javax.swing.JFrame {
         }
         if (texto.length() != 0 & this.empleadoSeleccionB.getSelectedIndex() != 0 & this.tipoTransaccionB.getSelectedItem().toString().equals("Ver Retiros")) {
             R = 25;
-        }
-        if (id_cliente == "") {
-            R = 26;
         }
 
         if (texto.length() != 0 & this.tipoCuentaB.getSelectedIndex() != 0) {
@@ -1099,7 +1228,7 @@ public class index extends javax.swing.JFrame {
                 int total3 = 0;
                 int totalD3 = 0;
                 int totalR3 = 0;
-                String matris3[][] = new String[miReporteDAO.filtro1().size()][7];
+                String matris3[][] = new String[miReporteDAO.filtro3().size()][7];
                 for (int i = 0; i < miReporteDAO.filtro3().size(); i++) {
                     matris3[i][0] = miReporteDAO.filtro3().get(i).getTipoTransaccion();
                     matris3[i][1] = miReporteDAO.filtro3().get(i).getTipoCuenta();
@@ -1109,7 +1238,7 @@ public class index extends javax.swing.JFrame {
                     matris3[i][5] = miReporteDAO.filtro3().get(i).getDepositante();
                     matris3[i][6] = miReporteDAO.filtro3().get(i).getEmpleado();
                     if (miReporteDAO.filtro3().get(i).getTipoTransaccion().equals("Depósito")) {
-                        totalD3 = totalD3 + Integer.parseInt(miReporteDAO.filtro1().get(i).getMonto());
+                        totalD3 = totalD3 + Integer.parseInt(miReporteDAO.filtro3().get(i).getMonto());
                     }
                     if (miReporteDAO.filtro3().get(i).getTipoTransaccion().equals("Retiro")) {
                         totalR3 = totalR3 + Integer.parseInt(miReporteDAO.filtro3().get(i).getMonto());
@@ -1832,12 +1961,12 @@ public class index extends javax.swing.JFrame {
                 this.totalRetiro.setText("$" + totalR25);
                 this.valorTotal.setText("$" + total25);
                 break;
-            case 26:
+            /*  case 26:
                 JOptionPane.showMessageDialog(null, "Numero de cuenta inexistente o erróneo\n"
                         + "Verifique el número de Cuenta");
-                break;/*
-            default:
                 break;*/
+            default:
+                break;
         }
     }
 

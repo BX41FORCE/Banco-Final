@@ -23,7 +23,7 @@ public class EmpleadosDAO {
         try {
             Statement estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO empleados (codigo, persona_id) VALUES ('" + empleado.getCodigo() + "', '" + empleado.getIdPersona() + "');");
-            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+          //  JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
 
@@ -32,6 +32,24 @@ public class EmpleadosDAO {
             JOptionPane.showMessageDialog(null, "No se Registro el empleado");
         }
 
+    }
+
+    public String consultarCodigo() {
+        DbConnection conex = new DbConnection();
+        String id_Persona = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT codigo FROM empleados ORDER BY id_empleado DESC LIMIT 1;");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                id_Persona = res.getString("codigo");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "no se pudo consultar el código\n" + e);
+        }
+        return id_Persona;
     }
 
     public ArrayList<Empleados> consultarEmpleado(int documento) {

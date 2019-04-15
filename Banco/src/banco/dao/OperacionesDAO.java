@@ -25,7 +25,7 @@ public class OperacionesDAO {
             Statement estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO operaciones (nombre_depositante, valor, empleado, cliente, transaccion) VALUES ('" + operacion.getDepositante() + "', '" + operacion.getValor() + "', '"
                     + operacion.getEmpleado() + "', ' " + operacion.getCliente() + "', ' " + operacion.getidTipoTransaccion() + "');");
-            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+        //    JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
 

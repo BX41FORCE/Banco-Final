@@ -14,7 +14,7 @@ public class PersonasDAO {
             Statement estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO personas (nombre,apellido,fecha_nacimiento,edad) VALUES ('" + persona.getNombre() + "', '" + persona.getApellido() + "', '"
                     + persona.getFechaNacimiento() + "', '" + persona.getEdad() + "');");
-            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+        //    JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
 
@@ -38,6 +38,42 @@ public class PersonasDAO {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "no se pudo enlazar a la persona\n" + e);
+        }
+        return id_Persona;
+    }
+
+    public String consultarEdadPersona() {
+        DbConnection conex = new DbConnection();
+        String id_Persona = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT edad FROM personas ORDER BY id_persona DESC LIMIT 1;");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                id_Persona = res.getString("edad");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo Consultar la Edad\n" + e);
+        }
+        return id_Persona;
+    }
+
+    public String consultarFechaPersona() {
+        DbConnection conex = new DbConnection();
+        String id_Persona = "";
+        try {
+            PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT fecha_nacimiento FROM personas ORDER BY id_persona DESC LIMIT 1;");
+            ResultSet res = consulta.executeQuery();
+            if (res.next()) {
+                id_Persona = res.getString("fecha_nacimiento");
+                res.close();
+                consulta.close();
+                conex.desconectar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo Consultar la Edad\n" + e);
         }
         return id_Persona;
     }

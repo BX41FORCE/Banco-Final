@@ -22,7 +22,7 @@ public class ClientesDAO {
         try {
             Statement estatuto = conex.getConnection().createStatement();
             estatuto.executeUpdate("INSERT INTO clientes (persona_id,cuenta) VALUES ('" + cliente.getIdPersona() + "', '" + cliente.getIdCuenta() + "');");
-            JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
+   //         JOptionPane.showMessageDialog(null, "Se ha registrado Exitosamente", "Información", JOptionPane.INFORMATION_MESSAGE);
             estatuto.close();
             conex.desconectar();
 
